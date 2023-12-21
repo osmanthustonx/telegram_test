@@ -6,7 +6,9 @@ const token = process.env.key;
 const bot = new TelegramBot(token, { polling: true });
 
 bot.on("message", (msg) => {
-  if (msg === "shareAddress") {
+  console.log(msg)
+  if (msg?.web_app_data?.data === "shareAddress") {
+    const userId = msg.from.id; 
     const chatId = msg.chat.id;
     const replyMarkup = JSON.stringify({
       inline_keyboard: [
@@ -14,13 +16,13 @@ bot.on("message", (msg) => {
           {
             text: "分享我的錢包地址：1GfGcsVrfmQx7NRgv3PAWMzgaw3D2hS8e",
             switch_inline_query:
-              "你的錢包地址：：1GfGcsVrfmQx7NRgv3PAWMzgaw3D2hS8e",
+              `https://t.me/shadowmoon_test_bot/ioWallet/${userId}`,
           },
         ],
       ],
     });
 
-    bot.sendMessage(chatId, "点击下面按钮分享你的比特币地址:", {
+    bot.sendMessage(chatId, "分享你的錢包地址", {
       reply_markup: replyMarkup,
     });
   }
