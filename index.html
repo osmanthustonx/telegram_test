@@ -113,6 +113,8 @@
       <button onclick="toggleMainButton();">Toggle Main Button</button> -->
       <button onclick="sendData();">Share Address</button>
       <button onclick="switchInlineQuery();">switchInlineQuery</button>
+      <button onclick="share();">分享</button>
+      <button onclick="shareText();">分享文字</button>
     </main>
     <div id="viewport"></div>
     <div id="viewport-params-size"></div>
@@ -168,7 +170,19 @@
         Telegram.WebApp.sendData("shareAddress");
       }
       function switchInlineQuery() {
-        Telegram.WebApp.switchInlineQuery("send: address", ["users"]);
+        Telegram.WebApp.switchInlineQuery(
+          "点此给我转账 https://t.me/shadowmoon_test_bot/ioWallet", ["users"]
+        );
+      }
+
+      function share() {
+        window.open("https://t.me/shadowmoon_test_bot/ioWallet");
+      }
+
+      function shareText() {
+        window.open(
+          "tg://msg_url?url=https://t.me/shadowmoon_test_bot/ioWallet&text=点此给我转账 https：//xxxxxx xxxxx"
+        );
       }
 
       function setViewportData() {
