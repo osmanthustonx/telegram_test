@@ -111,7 +111,7 @@
       <h1>Buttons</h1>
       <button onclick="Telegram.WebApp.expand();">Expand Webview</button>
       <button onclick="toggleMainButton();">Toggle Main Button</button>
-      <button onclick="switchInlineQuery();">switchInlineQuery</button>
+      <button onclick="sendData();">sendData</button>
     </main>
     <div id="viewport"></div>
     <div id="viewport-params-size"></div>
@@ -163,8 +163,8 @@
         }
       }
 
-      function switchInlineQuery() {
-        Telegram.WebApp.switchInlineQuery("Hello World!");
+      function sendData() {
+        Telegram.WebApp.sendData("/shareaddress");
       }
 
       function setViewportData() {

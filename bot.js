@@ -7,6 +7,28 @@ const bot = new TelegramBot(token, { polling: true });
 const InlineKeyboardMarkup = bot.InlineKeyboardMarkup;
 const InlineKeyboardButton = bot.InlineKeyboardButton;
 
+bot.on('message', (msg) => {
+  const chatId = msg.chat.id;
+
+  // URL of your web app
+  const webAppUrl = 'https://osmanthustonx.github.io/telegram_test/';
+
+  // Inline keyboard with web app button
+  const opts = {
+    reply_markup: JSON.stringify({
+      inline_keyboard: [
+        [{ 
+          text: 'Open Web App', 
+          web_app: { url: webAppUrl } 
+        }]
+      ]
+    })
+  };
+
+  // Send a message with the keyboard
+  bot.sendMessage(chatId, 'Click to open the Web App:', opts);
+});
+
 // 监听'/shareaddress'命令
 bot.onText(/\/shareaddress/, (msg) => {
   const chatId = msg.chat.id;
