@@ -111,7 +111,7 @@
       <h1>Buttons</h1>
       <button onclick="Telegram.WebApp.expand();">Expand Webview</button>
       <button onclick="toggleMainButton();">Toggle Main Button</button>
-      <button onclick="requestContact();">requestContact</button>
+      <button onclick="switchInlineQuery();">switchInlineQuery</button>
     </main>
     <div id="viewport"></div>
     <div id="viewport-params-size"></div>
@@ -163,9 +163,8 @@
         }
       }
 
-      async function requestContact() {
-        const res = await Telegram.WebApp.requestContact();
-        console.log(res);
+      function switchInlineQuery() {
+        Telegram.WebApp.switchInlineQuery("Hello World!");
       }
 
       function setViewportData() {
